@@ -89,6 +89,10 @@ ENV/
 .ropeproject
 
 # PyCharm
-.idea/
+# .idea/
+# .DS_Store
+# research/.DS_Store
+# research/slim/.DS_Store
+
 
 samples/outreach/blogs/segmentation_blogpost/carvana-image-masking-challenge/
