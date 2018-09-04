@@ -25,13 +25,13 @@
 set -e
 
 # Where the checkpoint and logs will be saved to.
-TRAIN_DIR=~/tmp/cifarnet-model
+TRAIN_DIR=/tmp/denesnet-model
 
 # Where the dataset is saved to.
-DATASET_DIR=~/tmp/cifar10
+DATASET_DIR=/tmp/denesnet
 
 # Download the dataset
-python3 download_and_convert_data.py \
+# python3 download_and_convert_data.py \
   --dataset_name=cifar10 \
   --dataset_dir=${DATASET_DIR}
 
@@ -41,8 +41,8 @@ python3 train_image_classifier.py \
   --dataset_name=cifar10 \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=cifarnet \
-  --preprocessing_name=cifarnet \
+  --model_name=denesnet \
+  --preprocessing_name=denesnet \
   --max_number_of_steps=100000 \
   --batch_size=128 \
   --save_interval_secs=120 \
@@ -61,4 +61,4 @@ python3 eval_image_classifier.py \
   --dataset_name=cifar10 \
   --dataset_split_name=test \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=cifarnet
+  --model_name=denesnet
