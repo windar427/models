@@ -25,14 +25,14 @@
 set -e
 
 # Where the checkpoint and logs will be saved to.
-TRAIN_DIR=/tmp/denesnet-model
+TRAIN_DIR=/output/ckpt
 
 # Where the dataset is saved to.
-DATASET_DIR=/tmp/denesnet
+DATASET_DIR=/data/ai100/quiz-w7
 
 # Download the dataset
 # python3 download_and_convert_data.py \
-  --dataset_name=cifar10 \
+  --dataset_name=validation \
   --dataset_dir=${DATASET_DIR}
 
 # Run training.
@@ -44,11 +44,11 @@ python3 train_image_classifier.py \
   --model_name=denesnet \
   --preprocessing_name=denesnet \
   --max_number_of_steps=100000 \
-  --batch_size=128 \
+  --batch_size=32 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
-  --optimizer=sgd \
+  --optimizer=rmsprop \
   --learning_rate=0.1 \
   --learning_rate_decay_factor=0.1 \
   --num_epochs_per_decay=200 \
@@ -57,8 +57,8 @@ python3 train_image_classifier.py \
 # Run evaluation.
 python3 eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
-  --eval_dir=${TRAIN_DIR} \
-  --dataset_name=cifar10 \
+  --eval_dir=/output/eval \
+  --dataset_name=validation \
   --dataset_split_name=test \
   --dataset_dir=${DATASET_DIR} \
   --model_name=denesnet

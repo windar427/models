@@ -33,6 +33,7 @@ from nets import vgg
 from nets.mobilenet import mobilenet_v2
 from nets.nasnet import nasnet
 from nets.nasnet import pnasnet
+from nets import densenet
 
 slim = tf.contrib.slim
 
@@ -72,6 +73,7 @@ networks_map = {'alexnet_v2': alexnet.alexnet_v2,
 
 arg_scopes_map = {'alexnet_v2': alexnet.alexnet_v2_arg_scope,
                   'cifarnet': cifarnet.cifarnet_arg_scope,
+                  'denesnet': densenet.bn_drp_scope,
                   'overfeat': overfeat.overfeat_arg_scope,
                   'vgg_a': vgg.vgg_arg_scope,
                   'vgg_16': vgg.vgg_arg_scope,
